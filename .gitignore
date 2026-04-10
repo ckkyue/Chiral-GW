@@ -1,8 +1,104 @@
-.vscode/
+# ========================================
+# Project-specific
+# ========================================
 Baryon Decay April 24/
 References/
+
+# ========================================
+# macOS
+# ========================================
 .DS_Store
+**/.DS_Store
+Thumbs.db
+ehthumbs.db
+
+# ========================================
+# VS Code & Editors
+# ========================================
+.vscode/
+*.code-workspace
+
+# ========================================
+# GitHub Codespaces & Dev Containers
+# ========================================
+.codespaces/
+.devcontainer/
+.github/codespaces/
+
+# ========================================
+# Python
+# ========================================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+env/
+env.bak/
+venv.bak/
+
+# ========================================
+# Jupyter Notebook
+# ========================================
+.ipynb_checkpoints/
+**/.ipynb_checkpoints/
+*-checkpoint.ipynb
+
+# ========================================
+# Data & ML files (large/untracked)
+# ========================================
+*.npy
+*.npz
+*.h5
+*.hdf5
+*.onnx
+*.pt
+*.pth
+*.ckpt
+*.joblib
+*.pkl
+*.pickle
+
+# Large data directories (uncomment if you have them)
+# data/
+# datasets/
+# models/
+# checkpoints/
+
+# ========================================
+# Media & Documents
+# ========================================
 *.jpg
 *.jpeg
 *.png
 *.pdf
+
+# ========================================
+# Logs & temporary files
+# ========================================
+*.log
+logs/
+*.tmp
+*.temp
