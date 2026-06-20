@@ -88,6 +88,12 @@ venv.bak/
 # models/
 # checkpoints/
 
+# Data files (pulled from external repos)
+*.csv
+*.dat
+AlbertoRoper-GW_turbulence/
+power-law-integrated_sensitivities/
+
 # ========================================
 # Media & Documents
 # ========================================
