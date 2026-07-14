@@ -2,49 +2,40 @@
 
 Numerical and symbolic notebooks for studying bubble collisions, chiral effects, and gravitational-wave spectra in a first-order phase transition setting.
 
-The repository mixes Python notebooks and Wolfram Mathematica notebooks:
+## Layout
 
-- `fluid_velocity.ipynb` explores velocity relations across a phase boundary and includes a simple 3D velocity-field visualization.
-- `gwplot.ipynb` computes a two-bubble gravitational-wave spectrum, caches expensive runs to `.pkl` files, and saves the main figure to `Figure/gwplot_twobubble.png`.
-- `chiral_estimate.nb` performs a Mathematica-based estimate of chiral/gravitational-wave related quantities from phase-transition parameters.
-- `gw_bubble_coll.nb` contains Mathematica calculations for bubble-collision setup functions such as cutoff profiles and excluded-angle behavior.
+- `notebooks/` - Python notebooks for velocity relations, GW spectra, and chirality detectability. Wolfram Mathematica notebooks for analytic estimates and bubble-collision setup.
+- `data/cache/gwplot/` - cached spectrum results written by `bubble_coll.ipynb`.
+- `data/sensitivity/power-law-integrated_sensitivities/` - detector sensitivity data used by `chirality.ipynb`.
+- `external/AlbertoRoper-GW_turbulence/` - bundled reference project and detector sensitivity inputs.
+- `figures/` - generated plots and exported PDFs.
+- `docs/` - reference documents such as `chiral-gw-proposal.pdf`.
 
-## Repository Layout
+## Main Files
 
-- `Figure/` - generated plots and figures.
-- `gwscaled_*.pkl` - cached spectrum results produced by `gwplot.ipynb`.
-- `chiral-gw-proposal.pdf` - supporting proposal or reference document.
-- `Chiral-GW.code-workspace` - VS Code workspace configuration.
+- `notebooks/chirality.ipynb` - GW detectability, magnetic helicity, and chirality plots.
+- `notebooks/bubble_coll.ipynb` - two-bubble gravitational-wave spectrum with cache reuse.
+- `notebooks/bubble_coll.nb` - Mathematica collision functions and cutoff profiles.
 
 ## Requirements
 
-Python notebook:
-
-- Python 3.10+ recommended
+- Python 3.10+ recommended for the Python notebooks
 - `numpy`
 - `scipy`
 - `matplotlib`
 - `numba`
 - `tqdm`
+- Wolfram Mathematica 14.0 or a compatible version for the `.nb` notebooks
 
-Mathematica notebooks:
+## Running
 
-- Wolfram Mathematica 14.0 or a compatible version with support for legacy packages used in the notebooks.
+Open the notebooks from their new locations and run them top to bottom.
 
-## How To Run
+`bubble_coll.ipynb` will load or regenerate cache files under `data/cache/gwplot/` and export the final spectrum plot to `figures/gw_bubble.pdf`.
 
-For the Python notebook, open `fluid_velocity.ipynb` or `gwplot.ipynb` in Jupyter or VS Code and run the cells top to bottom.
-
-The `gwplot.ipynb` notebook will:
-
-1. Build a frequency grid and compute the spectrum for different CP-violating phases.
-2. Reuse cached results from `gwscaled_*.pkl` when the parameters match.
-3. Write the final plot to `Figure/gwplot_twobubble.png`.
-
-For the Mathematica notebooks, open the `.nb` files in Wolfram Mathematica and evaluate the cells in order.
+`chirality.ipynb` reads detector sensitivity curves from `data/sensitivity/power-law-integrated_sensitivities/` and `external/AlbertoRoper-GW_turbulence/detector_sensitivity/`, then writes its plots into `figures/`.
 
 ## Notes
 
-- The cache files are generated artifacts. If you delete them, `gwplot.ipynb` will recompute the spectra and recreate the cache.
-- The notebooks are parameterized around a bubble wall velocity near `vW = 0.9`, a separation scale `d`, and electroweak-scale inputs around `T = 100 GeV`.
-- If you want a cleaner release snapshot, you can remove generated caches and regenerate the figure from `gwplot.ipynb`.
+- Generated PDFs and cache files are intentionally kept out of the top level.
+- If you add new notebooks, keep them under `notebooks/` and point any output paths to `figures/` or `data/cache/`
